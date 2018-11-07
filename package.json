@@ -1,6 +1,6 @@
 {
   "name": "algorithms",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Collection of ready-to-use implementation of some basic data structure and algorithms such as: fibonaci, syracuse, stack, queue, ...",
   "main": "index.js",
   "scripts": {
