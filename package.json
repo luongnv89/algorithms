@@ -1,0 +1,37 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "Collection of ready-to-use implementation of some basic data structure and algorithms such as: fibonaci, syracuse, stack, queue, ...",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luongnv89/algorithms.git"
+  },
+  "keywords": [
+    "algorithms",
+    "sorting",
+    "merge",
+    "sort",
+    "quick",
+    "sort",
+    "bubble",
+    "sort",
+    "insertion",
+    "sort"
+  ],
+  "author": "Luong NGUYEN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luongnv89/algorithms/issues"
+  },
+  "homepage": "https://github.com/luongnv89/algorithms#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "jest": {
+    "verbose": true
+  }
+}
