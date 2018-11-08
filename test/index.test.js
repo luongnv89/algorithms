@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-const { fiboNumber, syraNumber } = require('./index');
+const { fiboNumber, syraNumber } = require('../index');
 
 describe('Test fiboNumber(nb)', () => {
   test('input nb is negative', () => {

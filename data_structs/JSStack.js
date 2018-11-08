@@ -13,7 +13,7 @@
  *
  */
 
-class Stack {
+class JSStack {
   constructor(stackSize) {
     if (stackSize < 0) return null;
     if (stackSize !== parseInt(stackSize, 10)) return null;
@@ -57,5 +57,5 @@ class Stack {
 }
 
 module.exports = {
-  Stack,
+  JSStack,
 };

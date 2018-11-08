@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-const { fiboNumber, syraNumber } = require('./index');
+const { fiboNumber, syraNumber } = require('../index');
 
 describe('Test performance for fiboNumber(nb)', () => {
   const nbs = [10, 20, 30];
