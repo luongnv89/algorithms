@@ -17,42 +17,52 @@ class JSStack {
   constructor(stackSize) {
     if (stackSize < 0) return null;
     if (stackSize !== parseInt(stackSize, 10)) return null;
-    this.size = stackSize;
-    this.data = Array(stackSize);
-    this.currentSize = 0;
+    this._maxSize = stackSize;
+    this._data = Array(stackSize).fill(null);
+    this._size = 0;
   }
 
-  isEmpty () {
-    return this.currentSize === 0;
+  isEmpty() {
+    return this._size === 0 && this._data[this._size] === null;
   }
 
-  isFull () {
-    return this.currentSize === this.size;
+  isFull() {
+    return this._size === this._maxSize - 1;
   }
 
-  push (elem) {
+  push(elem) {
     if (this.isFull()) {
       return false;
     }
-    this.data[this.currentSize] = elem;
-    this.currentSize++;
+    if (this._data[this._size] !== null) {
+      this._size++;
+    };
+    this._data[this._size] = elem;
     return true;
   }
 
-  pop () {
+  pop() {
     if (this.isEmpty()) {
       return null;
     }
-    const ret = this.data[this.currentSize - 1];
-    this.currentSize--;
+    const ret = this._data[this._size];
+    this._data[this._size] = null;
+    if (this._size > 0) {
+      this._size--;
+    }
     return ret;
   }
 
-  top () {
+  top() {
     if (this.isEmpty()) {
       return null;
     }
-    return this.data[this.currentSize - 1];
+    return this._data[this._size];
+  }
+
+  size() {
+    if (this._data[this._size] === null) return 0;
+    return (this._size + 1);
   }
 }
 

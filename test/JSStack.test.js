@@ -15,9 +15,9 @@ describe('Test creating a stack', () => {
 
   test('A new JSstack should not be null', () => {
     const myStack = new JSStack(5);
-    expect(myStack).toHaveProperty('size');
-    expect(myStack).toHaveProperty('currentSize');
-    expect(myStack).toHaveProperty('data');
+    expect(myStack).toHaveProperty('_size');
+    expect(myStack).toHaveProperty('_maxSize');
+    expect(myStack).toHaveProperty('_data');
   });
 });
 
@@ -43,7 +43,7 @@ describe('Test checking if the stack is full', () => {
 
   test('stack is full', () => {
     const myStack = new JSStack(5);
-    for( let i = 0; i < 5; i++){
+    for (let i = 0; i < 5; i++) {
       myStack.push(i);
     }
     expect(myStack.isFull()).toBeTruthy();
@@ -61,7 +61,7 @@ describe('Test pushing an element', () => {
   test('stack is full', () => {
     const myStack = new JSStack(5);
     expect(myStack.isFull()).toBeFalsy();
-    for( let i = 0; i < 5; i++){
+    for (let i = 0; i < 5; i++) {
       expect(myStack.push(i)).toBeTruthy();
     }
     expect(myStack.isFull()).toBeTruthy();
@@ -98,5 +98,20 @@ describe('Test topping', () => {
     expect(myStack.isEmpty()).toBeTruthy();
     expect(myStack.push(15)).toBeTruthy();
     expect(myStack.top()).toEqual(15);
+  });
+});
+
+describe('Test size', () => {
+  test('should return 0', () => {
+    const myStack = new JSStack(5);
+    expect(myStack.size()).toEqual(0);
+  });
+
+  test('should return the size of stack', () => {
+    const myStack = new JSStack(5);
+    for (let i = 0; i < 5; i++) {
+      expect(myStack.push(i)).toBeTruthy();
+      expect(myStack.size()).toEqual(i + 1);
+    }
   });
 });

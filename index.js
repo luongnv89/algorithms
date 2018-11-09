@@ -30,7 +30,7 @@ const syraNumber = (k, nb) => {
   if (nb !== parseInt(nb, 10)) return 0;
   if (nb === 0) return k;
   const prevNumber = syraNumber(k, nb - 1);
-  if (prevNumber % 2 === 1 ) return 3 * prevNumber + 1;
+  if (prevNumber % 2 === 1) return 3 * prevNumber + 1;
   return prevNumber / 2;
 };
 
