@@ -13,7 +13,6 @@ const swapElements = (array, elem1, elem2) => {
 
 const shuffle = (array, _nbTimes) => {
   let newArray = array;
-  console.log('Input array: ', newArray);
   if (!newArray || newArray.length < 2) return newArray;
   if (newArray.length === 2) return swapElements(newArray, 0, 1);
   let nbTimes = _nbTimes | newArray.length;
@@ -25,7 +24,6 @@ const shuffle = (array, _nbTimes) => {
     }while(elem1 === elem2);
     newArray = swapElements(newArray, elem1, elem2);
   }
-  console.log('Shuffle newArray: ', newArray);
   return newArray;
 };
 

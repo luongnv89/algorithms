@@ -45,7 +45,6 @@ class JSQueue {
   }
 
   enqueue(elem) {
-    console.log('enqueue to : ', this._data, elem);
     if (this.isFull()) return false;
     if (this._data[this._tail] === null) {
       this._data[this._tail] = elem;
@@ -62,7 +61,6 @@ class JSQueue {
   }
 
   dequeue() {
-    console.log('dequeue of: ', this._data);
     if (this.isEmpty()) return null;
     const ret = this._data[this._head];
     this._data[this._head] = null;
@@ -76,7 +74,6 @@ class JSQueue {
       this._head = 0;
       this._tail = 0;
     }
-    console.log('dequeue value: ', ret);
     return ret;
   }
 
