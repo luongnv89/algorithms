@@ -11,9 +11,9 @@
     - queue dequeue ( queue ) ;
     - type head ( queue ) ;
  */
-
+const DEFAULT_QUEUE_SIZE = 1024;
 class JSQueue {
-  constructor(qSize) {
+  constructor(qSize = DEFAULT_QUEUE_SIZE) {
     if (qSize < 0) return null;
     if (qSize !== parseInt(qSize, 10)) return null;
     this._maxSize = qSize;
@@ -26,6 +26,12 @@ class JSQueue {
     return this._head === this._tail && this._data[this._head] === null;
   }
 
+  size() {
+    if (this.isEmpty()) return 0;
+    if (this._head <= this._tail) return (this._tail - this._head + 1); // [head, a, b, c, tail, null, null]
+    return (this._maxSize - this._head + this._tail + 1);// [a, tail, null, ....,null , head, b, c]
+  }
+
   /**
    * Check if the queue is full
    * head, b, c, d, e, tail ->
@@ -35,12 +41,7 @@ class JSQueue {
    * head, b, c, d, e, tail ->
    */
   isFull() {
-    if (this._head === 0) return (this._tail === (this._maxSize - 1) && this._data[this._head + 1] !== null);
-    if (this._head === this._tail + 1) {
-      if (this._head < (this._maxSize - 1)) return this._data[this._head + 1] !== null;
-      else return this._data[this._tail - 1] !== null;
-    }
-    return false;
+    return this.size() === this._maxSize;
   }
 
   enqueue(elem) {

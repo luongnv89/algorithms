@@ -1,4 +1,4 @@
-const { JSStack } = require('../data_structs/JSStack');
+const JSStack = require('../data_structs/JSStack').JSStack;
 
 describe('Test creating a stack', () => {
   test('stack size is negative', () => {

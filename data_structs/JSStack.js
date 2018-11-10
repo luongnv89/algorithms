@@ -13,8 +13,10 @@
  *
  */
 
+const DEFAULT_STACK_SIZE = 1024;
+
 class JSStack {
-  constructor(stackSize) {
+  constructor(stackSize = DEFAULT_STACK_SIZE) {
     if (stackSize < 0) return null;
     if (stackSize !== parseInt(stackSize, 10)) return null;
     this._maxSize = stackSize;

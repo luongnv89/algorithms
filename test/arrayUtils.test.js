@@ -67,7 +67,7 @@ describe('Test shuffle an array', () => {
   test('should return different array with the input array', () => {
     let originalArray = [1, 3, 4];
     let array = [1, 3, 4];
-    expect(shuffle(array)).not.toEqual(originalArray);
+    expect(shuffle(array, 1)).not.toEqual(originalArray);
     originalArray = [1, 3, 4, 5, 6, 7, 8, 9];
     array = [1, 3, 4, 5, 6, 7, 8, 9];
     expect(shuffle(array)).not.toEqual(originalArray);

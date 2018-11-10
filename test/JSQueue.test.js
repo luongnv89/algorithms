@@ -35,6 +35,35 @@ describe('Check if the queue is empty', () => {
   });
 });
 
+describe('Check the size of the queue', () => {
+  test('should return 0', () => {
+    const myQueue = new JSQueue(5);
+    expect(myQueue.size()).toEqual(0);
+  });
+
+  test('should return the size of the queue', () => {
+    const myQueue = new JSQueue(5);
+    const maxSize = 5;
+    // Add to queue until the queue is full
+    for (let index = 0; index < maxSize; index++) {
+      expect(myQueue.enqueue(index)).toBeTruthy();
+      expect(myQueue.size()).toEqual(index + 1);
+    }
+    expect(myQueue.size()).toEqual(maxSize);
+    expect(myQueue.isFull()).toBeTruthy();
+    // Remove some element from the queue
+    for (let index = 0; index < 3; index++) {
+      expect(myQueue.dequeue()).not.toBeNull();
+      expect(myQueue.size()).toEqual(maxSize - (index + 1));
+    }
+    // Add some element back to the queue util the queue is full again
+    for (let index = 0; index < 3; index++) {
+      expect(myQueue.enqueue(index)).toBeTruthy();
+    }
+    expect(myQueue.size()).toEqual(maxSize);
+  });
+});
+
 describe('Check if the queue is full', () => {
   test('should not be full', () => {
     const myQueue = new JSQueue(5);
