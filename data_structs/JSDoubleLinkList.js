@@ -1,11 +1,16 @@
-class JSLinkListNode {
+class JSDoubleLinkListNode {
   constructor(data) {
     this._value = data;
     this._next = null;
+    this._prev = null;
   }
 
   next() {
     return this._next;
+  }
+
+  prev() {
+    return this._prev;
   }
 
   value() {
@@ -14,6 +19,10 @@ class JSLinkListNode {
 
   setNext(nextElem) {
     this._next = nextElem;
+  }
+
+  setPrev(prevElem) {
+    this._prev = prevElem;
   }
 }
 
@@ -24,10 +33,11 @@ const __comparator = (elem1, elem2) => {
     return elem1 === elem2;
   }
 
-class JSLinkList {
+class JSDoubleLinkList {
 
   constructor(comparator = null) {
     this._head = null;
+    this._tail = null;
     this._size = 0;
     this._comparator = comparator ? comparator : __comparator;
   }
@@ -41,8 +51,11 @@ class JSLinkList {
   }
 
   insert(elem) {
-    const newElem = new JSLinkListNode(elem);
+    const newElem = new JSDoubleLinkListNode(elem);
     newElem.setNext(this._head);
+    if (this._head !== null) {
+      this._head.setPrev(newElem);
+    }
     this._head = newElem;
     this._size++;
   }
@@ -52,6 +65,7 @@ class JSLinkList {
     let currentElement = this._head;
     if (this._comparator(currentElement.value(), value)) {
       this._head = currentElement.next();
+      if (this._head !== null) this._head.setPrev(null);
       this._size--;
       return true;
     }
@@ -62,6 +76,8 @@ class JSLinkList {
       const nextElement = currentElement.next();
       if (this._comparator(nextElement.value(), value)) {
         currentElement.setNext(nextElement.next());
+        if (nextElement.next() !== null)
+          nextElement.next().setPrev(currentElement);
         this._size--;
         return true;
       }
@@ -69,9 +85,12 @@ class JSLinkList {
     }
     return false;
   }
+
 }
 
+
+
 module.exports = {
-  JSLinkList,
-  JSLinkListNode
+  JSDoubleLinkList,
+  JSDoubleLinkListNode
 };
