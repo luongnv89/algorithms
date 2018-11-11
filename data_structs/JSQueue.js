@@ -1,3 +1,4 @@
+"use strict";
 /**
  *
  *  - Set of elements of the same type
@@ -28,8 +29,8 @@ class JSQueue {
 
   size() {
     if (this.isEmpty()) return 0;
-    if (this._head <= this._tail) return (this._tail - this._head + 1); // [head, a, b, c, tail, null, null]
-    return (this._maxSize - this._head + this._tail + 1);// [a, tail, null, ....,null , head, b, c]
+    if (this._head <= this._tail) return this._tail - this._head + 1; // [head, a, b, c, tail, null, null]
+    return this._maxSize - this._head + this._tail + 1; // [a, tail, null, ....,null , head, b, c]
   }
 
   /**
@@ -83,5 +84,5 @@ class JSQueue {
 }
 
 module.exports = {
-  JSQueue,
+  JSQueue
 };

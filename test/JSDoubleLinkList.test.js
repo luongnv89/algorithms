@@ -9,6 +9,9 @@ describe('Test for JSDoubleLinkListNode', () => {
     const value = 15;
     const myJSLLElement = new JSDoubleLinkListNode(value);
     expect(myJSLLElement).not.toBeNull();
+    expect(myJSLLElement).toHaveProperty('_value');
+    expect(myJSLLElement).toHaveProperty('_next');
+    expect(myJSLLElement).toHaveProperty('_prev');
     expect(myJSLLElement.next()).toBeNull();
     expect(myJSLLElement.prev()).toBeNull();
     expect(myJSLLElement.value()).toEqual(value);
@@ -35,7 +38,9 @@ describe('Initialize a LinkList', () => {
   test('create a LinkList with default parameter', () => {
     const myList = new JSDoubleLinkList();
     expect(myList.isEmpty()).toBeTruthy();
-    // expect(myList).toHaveProperty(['_comparator','_head','_size']);
+    expect(myList).toHaveProperty('_comparator');
+    expect(myList).toHaveProperty('_head');
+    expect(myList).toHaveProperty('_size');
   });
 
   test('create a LinkList with user defined comparator', () => {
@@ -113,21 +118,21 @@ describe('Test method remove', () => {
 
   test('should return true - remove the head - user defined comparator', () => {
     const myList = new JSDoubleLinkList(comparator);
-    myList.insert({name: 'X', id: 1});
-    myList.insert({name: 'Y', id: 2});
-    myList.insert({name: 'Z', id: 3});
+    myList.insert({ name: 'X', id: 1 });
+    myList.insert({ name: 'Y', id: 2 });
+    myList.insert({ name: 'Z', id: 3 });
     expect(myList.size()).toEqual(3);
-    expect(myList.remove({name: 'Z', id: 3})).toBeTruthy();
+    expect(myList.remove({ name: 'Z', id: 3 })).toBeTruthy();
     expect(myList.size()).toEqual(2);
   });
 
   test('should return true - remove the element which is not the head of the list', () => {
     const myList = new JSDoubleLinkList(comparator);
-    myList.insert({name: 'X', id: 1});
-    myList.insert({name: 'Y', id: 2});
-    myList.insert({name: 'Z', id: 3});
+    myList.insert({ name: 'X', id: 1 });
+    myList.insert({ name: 'Y', id: 2 });
+    myList.insert({ name: 'Z', id: 3 });
     expect(myList.size()).toEqual(3);
-    expect(myList.remove({name: 'Y', id: 2})).toBeTruthy();
+    expect(myList.remove({ name: 'Y', id: 2 })).toBeTruthy();
     expect(myList.size()).toEqual(2);
   });
 

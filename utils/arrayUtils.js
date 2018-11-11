@@ -16,12 +16,12 @@ const shuffle = (array, _nbTimes) => {
   if (!newArray || newArray.length < 2) return newArray;
   if (newArray.length === 2) return swapElements(newArray, 0, 1);
   let nbTimes = _nbTimes | newArray.length;
-  for (let i = 0; i < nbTimes; i ++) {
+  for (let i = 0; i < nbTimes; i++) {
     const elem1 = Math.round(Math.random() * newArray.length);
     let elem2 = 0;
-    do{
+    do {
       elem2 = Math.round(Math.random() * newArray.length);
-    }while(elem1 === elem2);
+    } while (elem1 === elem2);
     newArray = swapElements(newArray, elem1, elem2);
   }
   return newArray;

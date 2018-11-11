@@ -1,3 +1,5 @@
+"use strict";
+
 class JSLinkListNode {
   constructor(data) {
     this._value = data;
@@ -18,11 +20,11 @@ class JSLinkListNode {
 }
 
 const __comparator = (elem1, elem2) => {
-    if (typeof elem1 === 'object') {
-      return JSON.stringify(elem1) === JSON.stringify(elem2);
-    }
-    return elem1 === elem2;
+  if (typeof elem1 === 'object') {
+    return JSON.stringify(elem1) === JSON.stringify(elem2);
   }
+  return elem1 === elem2;
+};
 
 class JSLinkList {
 

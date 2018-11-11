@@ -1,4 +1,4 @@
-
+"use strict";
 class JSHashTable {
   constructor() {
     this._data = {};
@@ -6,11 +6,13 @@ class JSHashTable {
   }
 
   _hashCode(key) {
-    var hash = 0, i, chr;
+    let hash = 0;
+    let i;
+    let chr;
     if (key.length === 0) return hash;
     for (i = 0; i < key.length; i++) {
       chr = key.charCodeAt(i);
-      hash = ((hash << 5) - hash) + chr;
+      hash = (hash << 5) - hash + chr;
       hash |= 0; // Convert to 32bit integer
     }
     return hash;
@@ -49,8 +51,8 @@ class JSHashTable {
   size() {
     return this._size;
   }
-};
+}
 
 module.exports = {
-  JSHashTable,
-}
+  JSHashTable
+};

@@ -4,6 +4,8 @@ describe('Test init a new HashTable', () => {
   test('should return a HashTable with some properties', () => {
     const hTable = new JSHashTable();
     expect(hTable.size()).toEqual(0);
+    expect(hTable).toHaveProperty('_size');
+    expect(hTable).toHaveProperty('_data');
   });
 });
 
@@ -12,7 +14,7 @@ describe('Test put()', () => {
     const hTable = new JSHashTable();
     const nbTest = 10;
     for (let index = 0; index < nbTest; index++) {
-      const element = {name: 'Name ' + index, age: index};
+      const element = { name: 'Name ' + index, age: index };
       const key = 'HashKey-' + index;
       hTable.put(element, key);
       expect(hTable.size()).toEqual(index + 1);
@@ -23,7 +25,7 @@ describe('Test put()', () => {
     const hTable = new JSHashTable();
     const nbTest = 10;
     for (let index = 0; index < nbTest; index++) {
-      const element = {name: 'Name ' + index, age: index};
+      const element = { name: 'Name ' + index, age: index };
       hTable.put(element);
       expect(hTable.size()).toEqual(index + 1);
     }
@@ -33,8 +35,8 @@ describe('Test put()', () => {
     const hTable = new JSHashTable();
     const nbTest = 10;
     for (let index = 0; index < nbTest; index++) {
-      const element = {name: 'Name ' + index, age: index};
-      const key = `HashKey-${index % 2 === 0 ?  index: (index + 1)}`;
+      const element = { name: 'Name ' + index, age: index };
+      const key = `HashKey-${index % 2 === 0 ? index : (index + 1)}`;
       hTable.put(element, key);
       expect(hTable.size()).toEqual(index + 1);
     }
@@ -46,7 +48,7 @@ describe('Test get elements', () => {
     const hTable = new JSHashTable();
     const nbTest = 10;
     for (let index = 0; index < nbTest; index++) {
-      const element = {name: 'Name ' + index, age: index};
+      const element = { name: 'Name ' + index, age: index };
       const key = 'HashKey-' + index;
       hTable.put(element, key);
       expect(hTable.size()).toEqual(index + 1);
@@ -56,8 +58,8 @@ describe('Test get elements', () => {
 
   test('get a list of element from HashTable with collision', () => {
     const hTable = new JSHashTable();
-    const element1 = {name: 'Name 1', age: 11};
-    const element2 = {name: 'Name 2', age: 22};
+    const element1 = { name: 'Name 1', age: 11 };
+    const element2 = { name: 'Name 2', age: 22 };
     const key = 'HashKey-12';
     hTable.put(element1, key);
     hTable.put(element2, key);
@@ -71,7 +73,7 @@ describe('Test remove elements', () => {
     const hTable = new JSHashTable();
     const nbTest = 10;
     for (let index = 0; index < nbTest; index++) {
-      const element = {name: 'Name ' + index, age: index};
+      const element = { name: 'Name ' + index, age: index };
       const key = 'HashKey-' + index;
       hTable.put(element, key);
       expect(hTable.size()).toEqual(index + 1);
@@ -79,7 +81,7 @@ describe('Test remove elements', () => {
     }
 
     for (let index = 0; index < nbTest; index++) {
-      const element = {name: 'Name ' + index, age: index};
+      const element = { name: 'Name ' + index, age: index };
       const key = 'HashKey-' + index;
       expect(hTable.remove(key)).toEqual([element]);
       expect(hTable.size()).toEqual(nbTest - (index + 1));
@@ -88,8 +90,8 @@ describe('Test remove elements', () => {
 
   test('remove elements from HashTable with collision', () => {
     const hTable = new JSHashTable();
-    const element1 = {name: 'Name 1', age: 11};
-    const element2 = {name: 'Name 2', age: 22};
+    const element1 = { name: 'Name 1', age: 11 };
+    const element2 = { name: 'Name 2', age: 22 };
     const key = 'HashKey-12';
     hTable.put(element1, key);
     hTable.put(element2, key);

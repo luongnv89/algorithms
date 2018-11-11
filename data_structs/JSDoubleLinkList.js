@@ -1,3 +1,4 @@
+"use strict";
 class JSDoubleLinkListNode {
   constructor(data) {
     this._value = data;
@@ -27,11 +28,11 @@ class JSDoubleLinkListNode {
 }
 
 const __comparator = (elem1, elem2) => {
-    if (typeof elem1 === 'object') {
-      return JSON.stringify(elem1) === JSON.stringify(elem2);
-    }
-    return elem1 === elem2;
+  if (typeof elem1 === 'object') {
+    return JSON.stringify(elem1) === JSON.stringify(elem2);
   }
+  return elem1 === elem2;
+};
 
 class JSDoubleLinkList {
 

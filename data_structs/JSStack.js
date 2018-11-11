@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 /**
  *  - Set of elements of the same type
     - The number of elements varies and is finite (≥ 0)
@@ -38,7 +38,7 @@ class JSStack {
     }
     if (this._data[this._size] !== null) {
       this._size++;
-    };
+    }
     this._data[this._size] = elem;
     return true;
   }
@@ -64,10 +64,10 @@ class JSStack {
 
   size() {
     if (this._data[this._size] === null) return 0;
-    return (this._size + 1);
+    return this._size + 1;
   }
 }
 
 module.exports = {
-  JSStack,
+  JSStack
 };

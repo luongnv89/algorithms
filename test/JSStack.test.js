@@ -1,47 +1,46 @@
-const JSStack = require('../data_structs/JSStack').JSStack;
+const JSStack = require("../data_structs/JSStack").JSStack;
 
-describe('Test creating a stack', () => {
-  test('stack size is negative', () => {
+describe("Test creating a stack", () => {
+  test("stack size is negative", () => {
     expect(new JSStack(-1)).toMatchObject({});
   });
 
-  test('stack size is not an integer number', () => {
+  test("stack size is not an integer number", () => {
     expect(new JSStack(1.2)).toMatchObject({});
   });
 
-  test('stack size is not a number', () => {
-    expect(new JSStack('a')).toMatchObject({});
+  test("stack size is not a number", () => {
+    expect(new JSStack("a")).toMatchObject({});
   });
 
-  test('A new JSstack should not be null', () => {
+  test("A new JSstack should not be null", () => {
     const myStack = new JSStack(5);
-    expect(myStack).toHaveProperty('_size');
-    expect(myStack).toHaveProperty('_maxSize');
-    expect(myStack).toHaveProperty('_data');
+    expect(myStack).toHaveProperty("_size");
+    expect(myStack).toHaveProperty("_maxSize");
+    expect(myStack).toHaveProperty("_data");
   });
 });
 
-
-describe('Test checking if the stack is empty', () => {
-  test('stack is empty', () => {
+describe("Test checking if the stack is empty", () => {
+  test("stack is empty", () => {
     const myStack = new JSStack(5);
     expect(myStack.isEmpty()).toBeTruthy();
   });
 
-  test('stack is not empty', () => {
+  test("stack is not empty", () => {
     const myStack = new JSStack(5);
     myStack.push(5);
     expect(myStack.isEmpty()).toBeFalsy();
   });
 });
 
-describe('Test checking if the stack is full', () => {
-  test('stack is not full', () => {
+describe("Test checking if the stack is full", () => {
+  test("stack is not full", () => {
     const myStack = new JSStack(5);
     expect(myStack.isFull()).toBeFalsy();
   });
 
-  test('stack is full', () => {
+  test("stack is full", () => {
     const myStack = new JSStack(5);
     for (let i = 0; i < 5; i++) {
       myStack.push(i);
@@ -50,15 +49,15 @@ describe('Test checking if the stack is full', () => {
   });
 });
 
-describe('Test pushing an element', () => {
-  test('stack is not full', () => {
+describe("Test pushing an element", () => {
+  test("stack is not full", () => {
     const myStack = new JSStack(5);
     expect(myStack.isEmpty()).toBeTruthy();
     expect(myStack.push(10)).toBeTruthy();
     expect(myStack.isEmpty()).toBeFalsy();
   });
 
-  test('stack is full', () => {
+  test("stack is full", () => {
     const myStack = new JSStack(5);
     expect(myStack.isFull()).toBeFalsy();
     for (let i = 0; i < 5; i++) {
@@ -69,15 +68,14 @@ describe('Test pushing an element', () => {
   });
 });
 
-
-describe('Test popping', () => {
-  test('stack is empty', () => {
+describe("Test popping", () => {
+  test("stack is empty", () => {
     const myStack = new JSStack(5);
     expect(myStack.isEmpty()).toBeTruthy();
     expect(myStack.pop()).toBeNull();
   });
 
-  test('stack is not empty', () => {
+  test("stack is not empty", () => {
     const myStack = new JSStack(5);
     expect(myStack.isEmpty()).toBeTruthy();
     expect(myStack.push(15)).toBeTruthy();
@@ -86,14 +84,14 @@ describe('Test popping', () => {
   });
 });
 
-describe('Test topping', () => {
-  test('stack is empty', () => {
+describe("Test topping", () => {
+  test("stack is empty", () => {
     const myStack = new JSStack(5);
     expect(myStack.isEmpty()).toBeTruthy();
     expect(myStack.top()).toBeNull();
   });
 
-  test('stack is not empty', () => {
+  test("stack is not empty", () => {
     const myStack = new JSStack(5);
     expect(myStack.isEmpty()).toBeTruthy();
     expect(myStack.push(15)).toBeTruthy();
@@ -101,13 +99,13 @@ describe('Test topping', () => {
   });
 });
 
-describe('Test size', () => {
-  test('should return 0', () => {
+describe("Test size", () => {
+  test("should return 0", () => {
     const myStack = new JSStack(5);
     expect(myStack.size()).toEqual(0);
   });
 
-  test('should return the size of stack', () => {
+  test("should return the size of stack", () => {
     const myStack = new JSStack(5);
     for (let i = 0; i < 5; i++) {
       expect(myStack.push(i)).toBeTruthy();
