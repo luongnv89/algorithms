@@ -9,7 +9,7 @@ const swapElements = (array, elem1, elem2) => {
   array[elem1] = array[elem2];
   array[elem2] = temp;
   return array;
-}
+};
 
 const shuffle = (array, _nbTimes) => {
   let newArray = array;

@@ -7,7 +7,7 @@ describe('test swap element in array', () => {
   });
 
   test('test input array is undefined', () => {
-    const array = undefined;
+    const array = null;
     expect(swapElements(array, 0, 1)).toEqual(array);
   });
 
@@ -44,7 +44,7 @@ describe('Test shuffle an array', () => {
   });
 
   test('test input array is undefined', () => {
-    const array = undefined;
+    const array = null;
     expect(shuffle(array)).toEqual(array);
   });
 

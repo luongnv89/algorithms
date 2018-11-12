@@ -1,8 +1,11 @@
 "use strict";
+
+const DEFAULT_TABLE_SIZE = 64;
 class JSHashTable {
-  constructor() {
+  constructor(tbSize = DEFAULT_TABLE_SIZE) {
     this._data = {};
     this._size = 0;
+    this._tbSize = tbSize;
   }
 
   _hashCode(key) {
@@ -15,7 +18,7 @@ class JSHashTable {
       hash = (hash << 5) - hash + chr;
       hash |= 0; // Convert to 32bit integer
     }
-    return hash;
+    return hash % this._tbSize;
   }
 
   put(elem, _key) {
